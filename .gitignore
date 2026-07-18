@@ -25,3 +25,5 @@ Thumbs.db
 
 # DataHub local files
 .datahub/
+
+scripts/datahub-auth-compose.yml
