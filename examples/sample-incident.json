@@ -1,0 +1,618 @@
+{
+  "incident": {
+    "title": "Data quality failure detected",
+    "asset_urn": "urn:li:dataset:(urn:li:dataPlatform:dbt,b2fd91.order_entry_db.order_entry.orders,PROD)",
+    "incident_type": "data_quality",
+    "description": "The selected dataset has failed one or more data quality checks and may be unsafe for downstream analytics.",
+    "severity": "high",
+    "status": "resolved",
+    "incident_id": "DP-08877A0F",
+    "created_at": "2026-07-19T17:57:31.725692-05:00",
+    "resolved_at": "2026-07-19T17:59:25.429142-05:00"
+  },
+  "investigation": {
+    "incident_id": "DP-08877A0F",
+    "source_asset_urn": "urn:li:dataset:(urn:li:dataPlatform:dbt,b2fd91.order_entry_db.order_entry.orders,PROD)",
+    "upstream_assets": [
+      {
+        "urn": "urn:li:dataJob:(urn:li:dataFlow:(spark,b2fd91.export_table_orders_to_s3,b2fd91.default),b2fd91.export_table_orders_to_s3)",
+        "name": "export_table_orders_to_s3",
+        "asset_type": "DATA_JOB",
+        "direction": "upstream",
+        "hops": 4,
+        "platform": "unknown",
+        "owner_names": [
+          "Data Platform Team",
+          "Ian Chen"
+        ],
+        "domain_name": "Data Platform Team",
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,b2fd91.order_entry_db.order_entry.orders,PROD)",
+        "name": "ORDERS",
+        "asset_type": "DATASET",
+        "direction": "upstream",
+        "hops": 1,
+        "platform": "snowflake",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataJob:(urn:li:dataFlow:(spark,b2fd91.import_table_orders_to_snowflake,b2fd91.default),b2fd91.import_table_orders_to_snowflake)",
+        "name": "import_table_orders_to_snowflake",
+        "asset_type": "DATA_JOB",
+        "direction": "upstream",
+        "hops": 2,
+        "platform": "unknown",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,b2fd91.order_entry_db.order_entry.orders,PROD)",
+        "name": "orders",
+        "asset_type": "DATASET",
+        "direction": "upstream",
+        "hops": 5,
+        "platform": "postgres",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:s3,b2fd91.demo-data-bucket/order_entry/orders,PROD)",
+        "name": "orders",
+        "asset_type": "DATASET",
+        "direction": "upstream",
+        "hops": 3,
+        "platform": "s3",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      }
+    ],
+    "downstream_assets": [
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:dbt,b2fd91.ORDER_ENTRY_DB.analytics.order_details,PROD)",
+        "name": "order_details",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 1,
+        "platform": "dbt",
+        "owner_names": [
+          "DataHub SE Team",
+          "Data Platform Team",
+          "Ian Chen",
+          "David Kim",
+          "Ben Porter",
+          "Julia Novak",
+          "James Wilson",
+          "Karen Okonkwo",
+          "Fiona Green",
+          "Sarah Chen"
+        ],
+        "domain_name": "Data Platform Team",
+        "description": "### order\\_details\n\nThe `order_details` table is a central hub for order information, consolidating data from various upstream sources to provide a comprehensive view of customer orders, products, and fulfillment. This table is a critical component of the order entry data ecosystem, enabling data-driven decision making and reporting across the organization.\n\nThe table is constructed by joining data from several source tables, including [@table_name](urn:li:dataset:(urn:li:dataPlatform:dbt,order_entry_db.order_entry.orders,PROD)), [@table_name](urn:li:dataset:(urn:li:dataPlatform:dbt,order_entry_db.order_entry.customers,PROD)), [@table_name](urn:li:dataset:(urn:li:dataPlatform:dbt,order_entry_db.order_entry.addresses,PROD)), [@table_name](urn:li:dataset:(urn:li:dataPlatform:dbt,order_entry_db.order_entry.countries,PROD)), [@table_name](urn:li:dataset:(urn:li:dataPlatform:dbt,order_entry_db.order_entry.regions,PROD)), [@table_name](urn:li:dataset:(urn:li:dataPlatform:dbt,order_entry_d..."
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:looker,b2fd91.order-entry.explore.order_details,PROD)",
+        "name": "Order Details",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "looker",
+        "owner_names": [
+          "Data Platform Team",
+          "Backend Engineering Team",
+          "Ian Chen"
+        ],
+        "domain_name": "Data Platform Team",
+        "description": "### Order Details\n\nThe **Order Details** table is a central component of the e-commerce data ecosystem, capturing detailed information about each order placed by customers. This table is of high business importance as it provides critical insights into customer purchasing behavior, product performance, and the overall health of the e-commerce operations.\n\nThe table is sourced from the [@order-entry-looker.view.order_details](urn:li:dataset:(urn:li:dataPlatform:looker,order-entry-looker.view.order_details,PROD)) view, which is likely a derived table from one or more underlying operational data sources. The table contains a wide range of dimensions related to the order, customer, product, and fulfillment details, as well as several measures such as order total, line item total, and quantity.\n\nThis table is likely consumed by various downstream reporting and analytics applications to support use cases such as sales performance analysis, customer segmentation, inventory management, and ..."
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,b2fd91.order_entry_db.analytics.order_details,PROD)",
+        "name": "ORDER_DETAILS",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 2,
+        "platform": "snowflake",
+        "owner_names": [
+          "DataHub SE Team",
+          "David Kim",
+          "Julia Novak"
+        ],
+        "domain_name": "Ecommerce Operations",
+        "description": "Details of orders."
+      },
+      {
+        "urn": "urn:li:dashboard:(tableau,b2fd91.843bf583-900b-f1ba-0532-b5e67a0373dc)",
+        "name": "Order Entry Dashboard",
+        "asset_type": "DASHBOARD",
+        "direction": "downstream",
+        "hops": 6,
+        "platform": "tableau",
+        "owner_names": [
+          "David Kim"
+        ],
+        "domain_name": "Marketing",
+        "description": "This dashboard gives your team a real-time view of incoming orders and processing status. You can see order volume trends, identify bottlenecks in fulfillment, and track key metrics like average order value and processing times.\n\nThe main view shows today's orders alongside weekly and monthly comparisons, so you can spot patterns or unusual spikes quickly. Filter by product category, sales rep, or customer type to drill down into specific segments. The processing status section highlights orders that need attention, whether they're stuck in review, waiting for inventory, or ready to ship.\n\nUse this dashboard during daily standup meetings to prioritize work, or check it throughout the day to stay on top of order flow. Sales managers can monitor team performance, while operations folks can identify where orders are getting delayed and take action before customers start calling."
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:dbt,b2fd91.ORDER_ENTRY_DB.analytics.order_history,PROD)",
+        "name": "order_history",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "dbt",
+        "owner_names": [],
+        "domain_name": "E-Commerce",
+        "description": "Incremental table containing all historical order information"
+      },
+      {
+        "urn": "urn:li:dashboard:(powerbi,b2fd91.reports.66666666-7777-8888-9999-000000000000)",
+        "name": "datahub_order_entries",
+        "asset_type": "DASHBOARD",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "powerbi",
+        "owner_names": [
+          "Sarah Chen",
+          "Marco Santos",
+          "Priya Sharma",
+          "Andrea Garcia"
+        ],
+        "domain_name": null,
+        "description": "This dashboard gives your team a real-time view of incoming orders and processing status. You can see order volume trends, identify bottlenecks in fulfillment, and track key metrics like average order value and processing times.\n\nThe main view shows today's orders alongside weekly and monthly comparisons, so you can spot patterns or unusual spikes quickly. Filter by product category, sales rep, or customer type to drill down into specific segments. The processing status section highlights orders that need attention, whether they're stuck in review, waiting for inventory, or ready to ship.\n\nUse this dashboard during daily standup meetings to prioritize work, or check it throughout the day to stay on top of order flow. Sales managers can monitor team performance, while operations folks can identify where orders are getting delayed and take action before customers start calling."
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:looker,b2fd91.order-entry-looker.view.order_details,PROD)",
+        "name": "order_details",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "looker",
+        "owner_names": [
+          "Fiona Green",
+          "Ian Chen",
+          "Data Platform Team",
+          "Andrea Garcia"
+        ],
+        "domain_name": "Data Platform Team",
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:powerbi,b2fd91.datahub_order_entries.ORDER_DETAILS,PROD)",
+        "name": "ORDER_DETAILS",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "powerbi",
+        "owner_names": [
+          "Karen Okonkwo"
+        ],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:tableau,b2fd91.b980a8c5-28eb-119e-f6ca-4da32732e5be,PROD)",
+        "name": "Promotions",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "tableau",
+        "owner_names": [
+          "David Kim"
+        ],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:tableau,b2fd91.c067553a-127e-a871-14a0-5f32cb032c78,PROD)",
+        "name": "Order Mode",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "tableau",
+        "owner_names": [
+          "David Kim"
+        ],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:tableau,b2fd91.f8fb6a0b-7be6-690b-cc45-3c6e0fd2bcde,PROD)",
+        "name": "Orders By Day",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "tableau",
+        "owner_names": [
+          "David Kim"
+        ],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:tableau,b2fd91.fadbf744-48be-0929-a47c-5786327a3343,PROD)",
+        "name": "Top Product Category",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "tableau",
+        "owner_names": [
+          "David Kim"
+        ],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:chart:(tableau,b2fd91.89f38fd7-058d-b66a-6db0-4f85f105468a)",
+        "name": "Orders By Month",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 5,
+        "platform": "tableau",
+        "owner_names": [
+          "David Kim"
+        ],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:chart:(tableau,b2fd91.b8c660a8-10ea-e32a-b823-fa655e1c2f43)",
+        "name": "Popular Products Categories",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 5,
+        "platform": "tableau",
+        "owner_names": [
+          "David Kim"
+        ],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:chart:(tableau,b2fd91.e051d978-989f-a329-5458-e01721b05570)",
+        "name": "Promotions",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 5,
+        "platform": "tableau",
+        "owner_names": [
+          "David Kim"
+        ],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:chart:(tableau,b2fd91.e36d7772-ac4d-4fd0-a893-aec88f3aa13e)",
+        "name": "Order Mode",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 5,
+        "platform": "tableau",
+        "owner_names": [
+          "David Kim"
+        ],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dashboard:(looker,b2fd91.dashboards.53)",
+        "name": "Order Entry Dashboard",
+        "asset_type": "DASHBOARD",
+        "direction": "downstream",
+        "hops": 6,
+        "platform": "looker",
+        "owner_names": [],
+        "domain_name": "Ecommerce Operations",
+        "description": "This dashboard gives your team a real-time view of incoming orders and processing status. You can see order volume trends, identify bottlenecks in fulfillment, and track key metrics like average order value and processing times.\n\nThe main view shows today's orders alongside weekly and monthly comparisons, so you can spot patterns or unusual spikes quickly. Filter by product category, sales rep, or customer type to drill down into specific segments. The processing status section highlights orders that need attention, whether they're stuck in review, waiting for inventory, or ready to ship.\n\nUse this dashboard during daily standup meetings to prioritize work, or check it throughout the day to stay on top of order flow. Sales managers can monitor team performance, while operations folks can identify where orders are getting delayed and take action before customers start calling."
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,b2fd91.order_entry_db.analytics.order_history,PROD)",
+        "name": "ORDER_HISTORY",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "snowflake",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:powerbi,b2fd91.datahub_order_entries.Customer_Analytics_Measures,PROD)",
+        "name": "Customer Analytics Measures",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "powerbi",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:powerbi,b2fd91.datahub_order_entries.Essential_KPI_Measures,PROD)",
+        "name": "Essential KPI Measures",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "powerbi",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:powerbi,b2fd91.datahub_order_entries.Geographic_Measures,PROD)",
+        "name": "Geographic Measures",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "powerbi",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:powerbi,b2fd91.datahub_order_entries.Product_Perfromance_Measures,PROD)",
+        "name": "Product Perfromance Measures",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "powerbi",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:powerbi,b2fd91.datahub_order_entries.Time_Inteligence_Measures,PROD)",
+        "name": "Time Inteligence Measures",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "powerbi",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:tableau,b2fd91.37fcfb15-34ae-973a-5ae3-cf63691d48e3,PROD)",
+        "name": "Custom SQL Query",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "tableau",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:tableau,b2fd91.4a3af1dd-fd0c-7077-d5fd-aa2fdf87cb23,PROD)",
+        "name": "Custom SQL Query",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "tableau",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:tableau,b2fd91.8bfe7483-1c9a-a0e1-ec84-57207dd37a15,PROD)",
+        "name": "Custom SQL Query",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "tableau",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:tableau,b2fd91.f32082e5-06b8-f46e-9047-4611fffe66b0,PROD)",
+        "name": "Custom SQL Query",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "tableau",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:chart:(looker,b2fd91.dashboard_elements.221)",
+        "name": "Popular Products",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 5,
+        "platform": "looker",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:chart:(looker,b2fd91.dashboard_elements.222)",
+        "name": "Promotions",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 5,
+        "platform": "looker",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:chart:(looker,b2fd91.dashboard_elements.223)",
+        "name": "Order Mode",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 5,
+        "platform": "looker",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:chart:(looker,b2fd91.dashboard_elements.224)",
+        "name": "Orders by Day",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 5,
+        "platform": "looker",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      },
+      {
+        "urn": "urn:li:chart:(powerbi,b2fd91.pages.66666666-7777-8888-9999-000000000000.217abe0d5c1cd421c384)",
+        "name": "Customer Analysis",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "powerbi",
+        "owner_names": [],
+        "domain_name": null,
+        "description": "Customer Analysis"
+      },
+      {
+        "urn": "urn:li:chart:(powerbi,b2fd91.pages.66666666-7777-8888-9999-000000000000.3f48c0bf859b2d14dcd0)",
+        "name": "Geographics",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "powerbi",
+        "owner_names": [],
+        "domain_name": null,
+        "description": "Geographics"
+      },
+      {
+        "urn": "urn:li:chart:(powerbi,b2fd91.pages.66666666-7777-8888-9999-000000000000.83a9aaa3207edd6c721e)",
+        "name": "Executive Summary",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "powerbi",
+        "owner_names": [],
+        "domain_name": null,
+        "description": "Executive Summary"
+      },
+      {
+        "urn": "urn:li:chart:(powerbi,b2fd91.pages.66666666-7777-8888-9999-000000000000.85e432543b30346a0507)",
+        "name": "DAX Visual",
+        "asset_type": "CHART",
+        "direction": "downstream",
+        "hops": 4,
+        "platform": "powerbi",
+        "owner_names": [],
+        "domain_name": null,
+        "description": "DAX Visual"
+      },
+      {
+        "urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,b2fd91.order_entry_db.analytics.order_details_replica,PROD)",
+        "name": "ORDER_DETAILS_REPLICA",
+        "asset_type": "DATASET",
+        "direction": "downstream",
+        "hops": 3,
+        "platform": "snowflake",
+        "owner_names": [],
+        "domain_name": null,
+        "description": null
+      }
+    ],
+    "total_upstream": 5,
+    "total_downstream": 36,
+    "total_affected_assets": 41,
+    "affected_datasets": 21,
+    "affected_dashboards": 15,
+    "affected_pipelines": 0,
+    "affected_owner_names": [
+      "Andrea Garcia",
+      "Backend Engineering Team",
+      "Ben Porter",
+      "Data Platform Team",
+      "DataHub SE Team",
+      "David Kim",
+      "Fiona Green",
+      "Ian Chen",
+      "James Wilson",
+      "Julia Novak",
+      "Karen Okonkwo",
+      "Marco Santos",
+      "Priya Sharma",
+      "Sarah Chen"
+    ],
+    "affected_domains": [
+      "Data Platform Team",
+      "E-Commerce",
+      "Ecommerce Operations",
+      "Marketing"
+    ]
+  },
+  "impact": {
+    "score": 76,
+    "risk_level": "HIGH",
+    "breakdown": {
+      "incident_severity": 24,
+      "blast_radius": 25,
+      "business_exposure": 20,
+      "operational_complexity": 7,
+      "governance_risk": 0
+    },
+    "explanation": "This incident received a DataPulse Impact Score of 76/100 and is classified as HIGH. The blast radius includes 36 downstream assets, 15 dashboards or charts, 0 pipelines, and 4 business domains."
+  },
+  "commander_analysis": {
+    "executive_summary": "A high-severity data quality failure has been detected in the `b2fd91.order_entry_db.order_entry.orders` dataset, which is a dbt model. This incident has a DataPulse Impact Score of 76/100, classifying it as HIGH risk. The issue is significant because it affects 36 downstream assets, including 15 dashboards/charts, and impacts four critical business domains: Data Platform Team, E-Commerce, Ecommerce Operations, and Marketing. This could lead to unreliable analytics and misinformed business decisions across these areas.",
+    "business_impact_summary": "The data quality failure on the `b2fd91.order_entry_db.order_entry.orders` dataset has a HIGH business impact, as indicated by a DataPulse Impact Score of 76/100. The blast radius includes 36 downstream assets, comprising 21 datasets and 15 dashboards/charts. Key business domains affected are 'Data Platform Team', 'E-Commerce', 'Ecommerce Operations', and 'Marketing'. This widespread impact means that critical reports and analytical insights used by these domains may be based on inaccurate or incomplete data, potentially leading to operational inefficiencies or incorrect strategic decisions.",
+    "root_cause_hypothesis": "The most plausible root-cause hypothesis is that the data quality issue originated from an upstream data source or transformation process feeding into the `b2fd91.order_entry_db.order_entry.orders` dbt dataset. The lineage shows that this dbt dataset depends on a Snowflake table named `ORDERS`, which in turn is populated via an `import_table_orders_to_snowflake` data job from an S3 dataset named `orders`. This S3 dataset is generated by an `export_table_orders_to_s3` data job from the original `orders` table in Postgres. An issue at any point in this upstream chain, particularly in the initial Postgres source or the data export/import jobs, could propagate to the dbt model. However, specific evidence of a failure in any of these upstream components is not provided.",
+    "root_cause_confidence": 40,
+    "evidence": [
+      "Incident DP-08877A0F: 'Data quality failure detected' on dataset `urn:li:dataset:(urn:li:dataPlatform:dbt,b2fd91.order_entry_db.order_entry.orders,PROD)`.",
+      "The incident has a DataPulse Impact Score of 76/100, classified as HIGH risk.",
+      "The blast radius includes 36 downstream assets, 15 dashboards or charts, 0 pipelines, and 4 business domains.",
+      "Affected business domains are 'Data Platform Team', 'E-Commerce', 'Ecommerce Operations', and 'Marketing'.",
+      "The immediate upstream asset is `urn:li:dataset:(urn:li:dataPlatform:snowflake,b2fd91.order_entry_db.order_entry.orders,PROD)`.",
+      "Further upstream assets include `urn:li:dataJob:(urn:li:dataFlow:(spark,b2fd91.import_table_orders_to_snowflake,b2fd91.default),b2fd91.import_table_orders_to_snowflake)`, `urn:li:dataset:(urn:li:dataPlatform:s3,b2fd91.demo-data-bucket/order_entry/orders,PROD)`, `urn:li:dataJob:(urn:li:dataFlow:(spark,b2fd91.export_table_orders_to_s3,b2fd91.default),b2fd91.export_table_orders_to_s3)`, and `urn:li:dataset:(urn:li:dataPlatform:postgres,b2fd91.order_entry_db.order_entry.orders,PROD)`."
+    ],
+    "recommended_actions": [
+      {
+        "priority": 1,
+        "action": "Investigate the specific data quality check failure on the `b2fd91.order_entry_db.order_entry.orders` dbt dataset.",
+        "reason": "Understanding the exact nature of the data quality issue is crucial for diagnosis and remediation. This is the direct source of the incident."
+      },
+      {
+        "priority": 2,
+        "action": "Notify owners of the `b2fd91.order_entry_db.order_entry.orders` dbt dataset and affected downstream assets about the data quality incident.",
+        "reason": "Given the HIGH impact score and extensive blast radius, immediate communication is necessary to prevent the use of potentially compromised data and to coordinate investigation efforts."
+      },
+      {
+        "priority": 3,
+        "action": "Examine the immediate upstream Snowflake dataset `b2fd91.order_entry_db.order_entry.orders` and the `import_table_orders_to_snowflake` data job for anomalies or failures.",
+        "reason": "The data quality issue in the dbt model likely stems from an upstream source. Investigating the direct upstream dependencies is the next logical step to identify the root cause."
+      },
+      {
+        "priority": 4,
+        "action": "Assess the impact on critical downstream dashboards and reports, particularly those owned by 'Data Platform Team', 'E-Commerce', 'Ecommerce Operations', and 'Marketing' domains.",
+        "reason": "To understand the full business impact and prioritize potential data remediation or communication, it's important to identify which specific dashboards and reports are most critically affected."
+      }
+    ],
+    "limitations": [
+      "The specific details of the data quality check that failed on `b2fd91.order_entry_db.order_entry.orders` are not provided.",
+      "No explicit evidence of a failure in any upstream data job or dataset has been provided; the root cause is hypothesized based on lineage.",
+      "The exact time of the data quality failure and its duration are not specified."
+    ]
+  },
+  "resolution_verification": {
+    "incident_id": "DP-08877A0F",
+    "verified": true,
+    "previous_status": "investigating",
+    "current_status": "resolved",
+    "issue_cleared": true,
+    "source_asset_accessible": true,
+    "verification_mode": "simulated_demo",
+    "signal_source": "DataPulse Demo Monitor",
+    "message": "The source asset is accessible and the incident detector reports that the original issue has cleared.",
+    "post_resolution_risk_score": 0,
+    "checked_at": "2026-07-19T17:59:25.429142-05:00"
+  }
+}
