@@ -27,3 +27,7 @@ Thumbs.db
 .datahub/
 
 scripts/datahub-auth-compose.yml
+
+# DataPulse runtime incident memory
+backend/data/incident_history.json
+backend/data/incident_history.tmp
