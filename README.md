@@ -6,6 +6,28 @@ Instead of only showing that data is connected, DataPulse investigates an incide
 
 ---
 
+## DataPulse Command Center
+
+![DataPulse Command Center](docs/screenshots/01-command-center.png)
+
+## Interactive Lineage Graph
+
+![Interactive Lineage Graph](docs/screenshots/02-lineage-graph.png)
+
+## Incident Analysis
+
+![Incident Analysis](docs/screenshots/03-incident-analysis.png)
+
+## DataHub Writeback
+
+![DataHub Writeback](docs/screenshots/04-datahub-writeback.png)
+
+## Incident Memory
+
+![Incident Memory](docs/screenshots/05-incident-memory.png)
+
+---
+
 ## Problem
 
 Modern data platforms contain hundreds or thousands of connected datasets, pipelines, dashboards, and business assets.
