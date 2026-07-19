@@ -1,33 +1,68 @@
+# DataPulse AI - Git Ignore
+
+# Environment Variables / Secrets
+.env
+.env.*
+!.env.example
+
+
 # Python
 __pycache__/
 *.py[cod]
-*.egg-info/
-venv/
+*$py.class
+
 .venv/
+venv/
+env/
 
-# Environment
-.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
-# Node
-node_modules/
-.next/
+.coverage
+.coverage.*
+htmlcov/
 
-# IDE
+*.egg-info/
+dist/
+build/
+
+
+# DataPulse Runtime Data
+backend/data/incident_history.json
+backend/data/*.tmp
+
+
+# Local Uploaded Data
+data_uploads/*
+!data_uploads/.gitkeep
+
+
+# Local DataHub Configuration
+scripts/datahub-auth-compose.yml
+
+
+# Next.js / Node
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.vercel/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# IDE / Editor
 .vscode/
 .idea/
 
-# OS
+*.swp
+*.swo
+
+
+# Operating System
 .DS_Store
 Thumbs.db
-
-# Logs
-*.log
-
-# DataHub local files
-.datahub/
-
-scripts/datahub-auth-compose.yml
-
-# DataPulse runtime incident memory
-backend/data/incident_history.json
-backend/data/incident_history.tmp
+desktop.ini

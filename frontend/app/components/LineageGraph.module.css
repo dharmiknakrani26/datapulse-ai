@@ -1,0 +1,992 @@
+.graphPanel {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   Header
+========================================================= */
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 16px;
+}
+
+
+.header h3 {
+  margin: 0;
+
+  font-size: 16px;
+
+  letter-spacing: -0.2px;
+}
+
+
+.subtitle {
+  max-width: 540px;
+
+  margin: 7px 0 0;
+
+  color: #6f849a;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+}
+
+
+.graphStats {
+  display: flex;
+
+  gap: 8px;
+}
+
+
+.graphStats span {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 8px 10px;
+
+  border: 1px solid
+    rgba(
+      148,
+      163,
+      184,
+      0.14
+    );
+
+  border-radius: 9px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  color: #6f849a;
+
+  font-size: 10px;
+}
+
+
+.graphStats strong {
+  color: #eef6ff;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   Legend
+========================================================= */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 15px;
+
+  margin-bottom: 13px;
+
+  padding: 10px 12px;
+
+  border: 1px solid
+    rgba(
+      148,
+      163,
+      184,
+      0.1
+    );
+
+  border-radius: 10px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.018
+    );
+}
+
+
+.legend span {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #8296aa;
+
+  font-size: 10px;
+}
+
+
+.legend i {
+  width: 8px;
+  height: 8px;
+
+  display: block;
+
+  border-radius: 50%;
+}
+
+
+.incidentDot {
+  background: #ff647c;
+}
+
+
+.datasetDot {
+  background: #4c8dff;
+}
+
+
+.pipelineDot {
+  background: #a67cff;
+}
+
+
+.dashboardDot {
+  background: #35d59a;
+}
+
+
+/* =========================================================
+   Graph Toolbar
+========================================================= */
+
+.graphToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-bottom: 7px;
+}
+
+
+.zoomControls,
+.viewControls {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+.zoomControls {
+  padding: 4px;
+
+  border: 1px solid
+    rgba(
+      148,
+      163,
+      184,
+      0.12
+    );
+
+  border-radius: 9px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.02
+    );
+}
+
+
+.zoomControls button,
+.viewControls button {
+  border: 1px solid
+    rgba(
+      148,
+      163,
+      184,
+      0.13
+    );
+
+  border-radius: 7px;
+
+  background: #0b1d2e;
+
+  color: #9eb4c9;
+
+  transition: 0.2s ease;
+}
+
+
+.zoomControls button {
+  width: 31px;
+  height: 31px;
+
+  font-size: 18px;
+}
+
+
+.zoomControls span {
+  min-width: 48px;
+
+  color: #9eb4c9;
+
+  font-size: 10px;
+
+  text-align: center;
+}
+
+
+.viewControls button {
+  padding: 8px 11px;
+
+  font-size: 10px;
+}
+
+
+.zoomControls button:hover,
+.viewControls button:hover {
+  border-color:
+    rgba(
+      76,
+      141,
+      255,
+      0.45
+    );
+
+  background:
+    rgba(
+      76,
+      141,
+      255,
+      0.09
+    );
+
+  color: #eef6ff;
+}
+
+
+.zoomControls button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.35;
+}
+
+
+.scrollHint {
+  margin: 0 0 9px;
+
+  color: #607991;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   Scrollable Graph Area
+========================================================= */
+
+.scrollArea {
+  width: 100%;
+  height: 620px;
+
+  position: relative;
+
+  overflow-x: scroll;
+  overflow-y: scroll;
+
+  overscroll-behavior: contain;
+
+  border: 1px solid
+    rgba(
+      148,
+      163,
+      184,
+      0.12
+    );
+
+  border-radius: 14px;
+
+  background: #071522;
+
+  scrollbar-width: auto;
+
+  scrollbar-color:
+    rgba(
+      112,
+      166,
+      255,
+      0.6
+    )
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+}
+
+
+/* Chrome / Edge scrollbar */
+
+.scrollArea::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+
+.scrollArea::-webkit-scrollbar-track {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+}
+
+
+.scrollArea::-webkit-scrollbar-thumb {
+  min-height: 40px;
+
+  border: 3px solid #071522;
+
+  border-radius: 20px;
+
+  background:
+    rgba(
+      112,
+      166,
+      255,
+      0.55
+    );
+}
+
+
+.scrollArea::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(
+      112,
+      166,
+      255,
+      0.82
+    );
+}
+
+
+.scrollArea::-webkit-scrollbar-corner {
+  background: #071522;
+}
+
+
+/* This controls the physical scrollable size */
+
+.zoomSizer {
+  position: relative;
+
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+/* React Flow itself stays at natural size.
+   We visually scale it while zoomSizer controls
+   the actual scrollbar dimensions. */
+
+.flowCanvas {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  transform-origin:
+    top left;
+
+  background:
+    linear-gradient(
+      145deg,
+      #071522,
+      #081a2b
+    );
+}
+
+
+/* =========================================================
+   Nodes
+========================================================= */
+
+.node {
+  width: 225px;
+
+  padding: 12px 13px;
+
+  border: 1px solid
+    rgba(
+      76,
+      141,
+      255,
+      0.38
+    );
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      10,
+      29,
+      46,
+      0.98
+    );
+
+  box-shadow:
+    0 10px 30px
+    rgba(
+      0,
+      0,
+      0,
+      0.25
+    );
+
+  color: #eef6ff;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.node:hover {
+  border-color:
+    rgba(
+      112,
+      166,
+      255,
+      0.8
+    );
+
+  box-shadow:
+    0 14px 35px
+    rgba(
+      0,
+      0,
+      0,
+      0.35
+    );
+}
+
+
+.incident {
+  border: 1px solid
+    rgba(
+      255,
+      100,
+      124,
+      0.85
+    );
+
+  box-shadow:
+    0 0 0 3px
+      rgba(
+        255,
+        100,
+        124,
+        0.08
+      ),
+    0 14px 35px
+      rgba(
+        0,
+        0,
+        0,
+        0.3
+      );
+}
+
+
+.dataset {
+  border-color:
+    rgba(
+      76,
+      141,
+      255,
+      0.5
+    );
+}
+
+
+.pipeline {
+  border-color:
+    rgba(
+      166,
+      124,
+      255,
+      0.6
+    );
+}
+
+
+.dashboard {
+  border-color:
+    rgba(
+      53,
+      213,
+      154,
+      0.6
+    );
+}
+
+
+.other {
+  border-color:
+    rgba(
+      148,
+      163,
+      184,
+      0.35
+    );
+}
+
+
+.nodeTop {
+  display: flex;
+  align-items: center;
+  justify-content:
+    space-between;
+
+  gap: 8px;
+
+  margin-bottom: 7px;
+}
+
+
+.nodeType {
+  overflow: hidden;
+
+  color: #6d88a4;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.6px;
+
+  text-overflow:
+    ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.hopBadge {
+  flex: 0 0 auto;
+
+  padding: 3px 6px;
+
+  border-radius: 6px;
+
+  background:
+    rgba(
+      76,
+      141,
+      255,
+      0.1
+    );
+
+  color: #70a6ff;
+
+  font-size: 8px;
+}
+
+
+.nodeName {
+  display: block;
+
+  overflow: hidden;
+
+  color: #eef6ff;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  text-overflow:
+    ellipsis;
+
+  white-space: nowrap;
+}
+
+
+.nodeMeta {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 5px;
+
+  margin-top: 8px;
+}
+
+
+.nodeMeta span {
+  padding: 3px 6px;
+
+  border-radius: 5px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  color: #7690aa;
+
+  font-size: 8px;
+}
+
+
+.handle {
+  width: 8px !important;
+  height: 8px !important;
+
+  border: 2px solid
+    #081a2b !important;
+
+  background:
+    #70a6ff !important;
+}
+
+
+/* =========================================================
+   Loading / Error / Empty
+========================================================= */
+
+.loadingState,
+.errorState,
+.emptyState {
+  min-height: 330px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border: 1px solid
+    rgba(
+      148,
+      163,
+      184,
+      0.11
+    );
+
+  border-radius: 14px;
+
+  color: #6f849a;
+
+  text-align: center;
+
+  font-size: 11px;
+}
+
+
+.loadingState strong,
+.errorState strong {
+  color: #eef6ff;
+
+  font-size: 13px;
+}
+
+
+.loader {
+  width: 35px;
+  height: 35px;
+
+  margin-bottom: 8px;
+
+  border: 3px solid
+    rgba(
+      76,
+      141,
+      255,
+      0.15
+    );
+
+  border-top-color:
+    #4c8dff;
+
+  border-radius: 50%;
+
+  animation:
+    spin 0.9s linear
+    infinite;
+}
+
+
+@keyframes spin {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+
+.errorState {
+  color: #ff8fa1;
+}
+
+
+/* =========================================================
+   Summary
+========================================================= */
+
+.summaryGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+
+.summaryGrid div {
+  padding: 10px;
+
+  border: 1px solid
+    rgba(
+      148,
+      163,
+      184,
+      0.1
+    );
+
+  border-radius: 9px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.018
+    );
+}
+
+
+.summaryGrid strong {
+  display: block;
+
+  margin-bottom: 2px;
+
+  font-size: 15px;
+}
+
+
+.summaryGrid span {
+  color: #6f849a;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   Selected Asset
+========================================================= */
+
+.selectedAsset {
+  position: relative;
+
+  margin-top: 12px;
+
+  padding: 14px;
+
+  border: 1px solid
+    rgba(
+      76,
+      141,
+      255,
+      0.24
+    );
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      76,
+      141,
+      255,
+      0.045
+    );
+}
+
+
+.selectedLabel {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #70a6ff;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+}
+
+
+.selectedAsset
+  > div
+  > strong {
+  font-size: 12px;
+}
+
+
+.selectedMeta {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      1fr
+    );
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+
+.selectedMeta span {
+  color: #6f849a;
+
+  font-size: 9px;
+}
+
+
+.selectedMeta strong {
+  display: block;
+
+  margin-top: 3px;
+
+  overflow: hidden;
+
+  color: #b4c5d6;
+
+  font-size: 10px;
+
+  text-overflow:
+    ellipsis;
+
+  white-space: nowrap;
+
+  text-transform:
+    capitalize;
+}
+
+
+.selectedAsset p {
+  margin: 10px 0 0;
+
+  color: #6f849a;
+
+  font-size: 10px;
+}
+
+
+.selectedAsset p strong {
+  color: #b4c5d6;
+}
+
+
+.selectedAsset
+  > button {
+  position: absolute;
+
+  top: 9px;
+  right: 10px;
+
+  width: 26px;
+  height: 26px;
+
+  border: 0;
+
+  border-radius: 7px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  color: #8296aa;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media (
+  max-width: 800px
+) {
+  .header {
+    flex-direction:
+      column;
+  }
+
+
+  .graphToolbar {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+
+
+  .scrollArea {
+    height: 520px;
+  }
+
+
+  .summaryGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+  }
+
+
+  .selectedMeta {
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+  }
+}
